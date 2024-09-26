@@ -1,0 +1,15 @@
+.footer-container {
+    width: 100%;
+}
+
+.footer {
+    width: 60%;
+    border-top: 1px solid #4a4a4a;
+    margin: 75px auto 10px auto;
+    color: #aaa;
+    padding: 20px 0;
+}
+
+.footer p {
+    margin: 10px 0;
+}

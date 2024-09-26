@@ -1,0 +1,45 @@
+.app {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.page {
+    flex: 1;
+}
+
+a {
+    color: #0099ff;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+a:hover {
+    color: #00ccff;
+}
+
+.btn {
+    background-color: #ee2200;
+    border: 3px solid transparent;
+    padding: 5px 8px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: "Inter";
+    color: white;
+}
+.btn.success {
+    background-color: #13ed57;
+    color: #222;
+}
+
+.btn:hover {
+    filter: brightness(1.2);
+    border: 3px solid #ff5233;
+}
+.btn.success:hover {
+    border: 3px solid #61ff92;
+}
+
+.btn:active {
+    filter: brightness(0.6);
+}

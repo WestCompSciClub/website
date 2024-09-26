@@ -1,0 +1,46 @@
+form .item {
+    width: 450px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+input {
+    padding: 10px;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    border-radius: 10px;
+    width: 100%;
+    height: 20px;
+    background-color: #111;
+    color: white;
+    margin-bottom: 5px;
+    z-index: 999;
+    font-family: "Inter";
+}
+input::placeholder {
+    font-family: "Inter";
+    color: #888;
+    font-style: italic;
+}
+
+.error {
+    opacity: 0;
+    font-size: 14px;
+    color: #ED4245;
+    transition: .2s ease;
+}
+.error.show {
+    opacity: 1;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+}

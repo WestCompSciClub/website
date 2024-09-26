@@ -1,0 +1,91 @@
+@font-face {
+    font-family: "VeniteAdoremus";
+    src: url("fonts/VeniteAdoremus.ttf");
+}
+
+.leaderboard {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    min-width: 400px;
+    max-width: 700px;
+    margin: 0 auto;
+    row-gap: 10px;
+}
+
+.entry {
+    background-color: #5f5f5f;
+    display: flex;
+    /* justify-content: space-between; */
+    height: 40px;
+    border-radius: 10px;
+    transition: 0.2s ease;
+}
+.entry:not(.headers):hover {
+    transform: scale(1.1);
+}
+
+.entry:not(.default) {
+    height: 45px;
+    font-size: 20px;
+}
+
+.entry.first {
+    /* background:linear-gradient(to right, #ffc628, #fff692); */
+    /* background: linear-gradient(to right, #ff5e00, #ff9a0d); */
+    background-color: #ffae00;
+}
+.entry.second {
+    /* background: linear-gradient(to right, #b1b1b1, #dadce1); */
+    /* background: linear-gradient(to right, #be8a53, #c88220); */
+    background-color: #c0c0c0;
+}
+.entry.third {
+    /* background: linear-gradient(to right, rgb(171, 115, 36), #df9f5e); */
+    /* background: linear-gradient(to right, #be8a53, #c88220); */
+    background-color: #a36200;
+}
+
+.leftinfo {
+    display: flex;
+    flex-basis: 50%;
+}
+
+.points {
+    margin: auto 10px;
+    font-family: "VeniteAdoremus";
+    cursor: default;
+    flex-basis: 25%;
+    text-align: center;
+}
+
+.wins {
+    margin: auto 10px;
+    font-family: "VeniteAdoremus";
+    flex-basis: 25%;
+    cursor: default;
+}
+
+.position {
+    margin: auto 10px;
+    width: fit-content;
+    cursor: default;
+}
+
+.name {
+    width: fit-content;
+    margin: auto 0;
+}
+
+.headers {
+    background-color: transparent;
+}
+
+.header {
+    font-family: Inter !important;
+}
+
+.header-wins {
+    flex-basis: 25%;
+    text-align: right;
+}
