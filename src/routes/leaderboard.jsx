@@ -73,7 +73,7 @@ export default function Leaderboard() {
 
                     {isLoading ? 
                         (
-                            <i className="fa-solid fa-spinner loading"></i>
+                            <div class="spinner"><div></div><div></div><div></div><div></div></div>
                         ) : (
                             <>
                             {members}
