@@ -23,19 +23,16 @@
 }
 
 .entry p {
-    transition: 0.2s ease;
+    transition: 0.3s ease;
 }
 
 .entry:not(.headers):hover {
     transform: scale(1.1);
 }
 
-.entry.first:hover p, .entry.second:hover p, .entry.third:hover p {
-    font-size: 24px !important;
-}
-
 .entry:not(.headers):hover p {
-    font-size: 20px;
+    transform: scale(1.1);
+    text-shadow: 0 0 10px black;
 }
 
 .entry:not(.default) {
