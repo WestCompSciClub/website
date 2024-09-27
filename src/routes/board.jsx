@@ -11,6 +11,18 @@ const boardPresidents = [
         id: "neel_karkhanis",
         grade: "Senior",
     },
+    {
+        name: "Aiden Lee",
+        position: "Co-President",
+        id: "aiden_lee",
+        grade: "Senior",
+    },
+    {
+        name: "Rohith Krish",
+        position: "Vice President",
+        id: "rohith_krish",
+        grade: "Senior",
+    },
 ];
 
 const boardMembers = [
@@ -25,8 +37,20 @@ const boardMembers = [
         position: "Secretary",
         id: "isaac_goldberg",
         grade: "Senior",
-        badge: "Website Dev",
+        otherPosition: "Website Dev",
     },
+    {
+        name: "Ayush Agarwal",
+        position: "ICC Rep",
+        id: "ayush_agarwal",
+        grade: "Sophomore",
+    },
+    {
+        name: "Parthiv Patel",
+        position: "Unknown",
+        id: "parthiv_patel",
+        grade: "Unknown"
+    }
 ]
 
 const gradeColors = {
@@ -47,14 +71,14 @@ function positionColor(pos) {
 function makeCard(person) {
     let [primary, border] = positionColor(person.position);
     return (
-        <div className="card" key={person.id}>
+        <div className="board-member" key={person.id}>
             <p className="grade" style={{"backgroundColor": gradeColors[person.grade]}}>{person.grade}</p>
             <div className="image-container">
                 <img src="https://gmedia.playstation.com/is/image/SIEPDC/fortnite-keyart-01-en-30nov23?$facebook$"></img>
             </div>
             <p className="name">{person.name}</p>
             <p className="position" style={{"backgroundColor": primary, "borderColor": border}}>{person.position}</p>
-            {person.badge && <p className="badge" style={{"backgroundColor": primary, "borderColor": border}}>{person.badge}</p>}
+            {person.otherPosition && <p className="otherPosition" style={{"backgroundColor": primary, "borderColor": border}}>{person.otherPosition}</p>}
         </div>
     );
 }

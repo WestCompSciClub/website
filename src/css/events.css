@@ -7,7 +7,7 @@
     margin: 50px auto;
     background-color: #555;
     width: 400px;
-    padding: 10px 0 50px 0;
+    padding: 10px 0;
     border-radius: 20px;
 }
 
@@ -16,4 +16,30 @@
     margin: auto !important;
     border-radius: 10px;
     transition: 0.2s ease !important;
+}
+
+.event .date {
+    font-size: 20px;
+    margin: 0 auto;
+    width: fit-content;
+    background-color: #ffd000;
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: black;
+}
+
+.event h3 {
+    margin: 5px auto;
+    font-size: 24px;
+    color: white;
+}
+
+.event .room {
+    margin: 5px auto;
+    font-style: italic;
+    color: #aaa;
+}
+
+.event p {
+    margin: 20px 10px 10px 10px;
 }

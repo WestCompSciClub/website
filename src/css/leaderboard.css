@@ -17,9 +17,11 @@
     background-color: #5f5f5f;
     display: flex;
     /* justify-content: space-between; */
-    height: 40px;
+    height: fit-content;
+    min-height: 40px;
     border-radius: 10px;
     transition: 0.2s ease;
+    line-height: 20px;
 }
 
 .entry p {
@@ -102,76 +104,3 @@
     text-align: right;
 }
 
-/* SPINNER ANIMATION */
-.spinner,
-.spinner div {
-    box-sizing: border-box;
-    margin: 0 auto;
-}
-
-.spinner {
-    display: inline-block;
-    position: relative;
-    width: 80px;
-    height: 80px;
-}
-
-.spinner div {
-    position: absolute;
-    top: 33.33333px;
-    width: 13.33333px;
-    height: 13.33333px;
-    border-radius: 50%;
-    background: currentColor;
-    animation-timing-function: cubic-bezier(0, 1, 1, 0);
-}
-
-.spinner div:nth-child(1) {
-    left: 8px;
-    animation: spinner1 0.6s infinite;
-}
-
-.spinner div:nth-child(2) {
-    left: 8px;
-    animation: spinner2 0.6s infinite;
-}
-
-.spinner div:nth-child(3) {
-    left: 32px;
-    animation: spinner2 0.6s infinite;
-}
-
-.spinner div:nth-child(4) {
-    left: 56px;
-    animation: spinner3 0.6s infinite;
-}
-
-@keyframes spinner1 {
-    0% {
-        transform: scale(0);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-@keyframes spinner3 {
-    0% {
-        transform: scale(1);
-    }
-
-    100% {
-        transform: scale(0);
-    }
-}
-
-@keyframes spinner2 {
-    0% {
-        transform: translate(0, 0);
-    }
-
-    100% {
-        transform: translate(24px, 0);
-    }
-}

@@ -2,6 +2,7 @@ import '../css/app.css';
 import "../css/leaderboard.css";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
+import Spinner from "../components/spinner";
 import { Helmet } from 'react-helmet';
 import { useState, useEffect } from 'react';
 
@@ -35,6 +36,12 @@ export default function Leaderboard() {
         try {
             const response = await fetch("https://whscompsciclub.vercel.app/api/leaderboard");
             const json = await response.json();
+
+            json.sort((a, b) => {
+                if (a.points > b.points) return -1;
+                else if (a.points < b.points) return 1;
+                else return 0;
+            });
 
             var entries = [];
             for (let i = 0; i < json.length; i++) {
@@ -73,7 +80,7 @@ export default function Leaderboard() {
 
                     {isLoading ? 
                         (
-                            <div class="spinner"><div></div><div></div><div></div><div></div></div>
+                            <Spinner></Spinner>
                         ) : (
                             <>
                             {members}

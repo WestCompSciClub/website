@@ -4,7 +4,7 @@
     justify-content: center;
 }
 
-.board .card {
+.board .board-member {
     width: 220px;
     margin: 16px;
     background-color: #751700;
@@ -14,11 +14,11 @@
     transition: 0.2s ease;
     box-shadow: 0 0 10px 4px #222;
 }
-.board .card:hover {
+.board .board-member:hover {
     transform: scale(1.075);
 }
 
-.board .card .grade {
+.board .board-member .grade {
     position: absolute;
     right: 18px;
     top: 18px;
@@ -28,37 +28,37 @@
     z-index: 999;
 }
 
-.board .card .image-container {
+.board .board-member .image-container {
     overflow: hidden;
     border-radius: 15px;
     transition: 0.3s ease;
-    width: 220px;
+    width: 100%;
     height: 250px;
 }
 
-.board .card:hover .image-container {
+.board .board-member:hover .image-container {
     border-radius: 10px;
 }
 
-.board .card .image-container img {
-    width: 230px;
+.board .board-member .image-container img {
+    width: 100%;
     height: 280px;
     object-fit: cover;
     border-radius: 19px;
     transform-origin: 50% 0%;
     transition: transform 0.4s ease;
 }
-.board .card:hover .image-container img {
+.board .board-member:hover .image-container img {
     transform: scale(1.2);
 }
 
-.board .card .name {
+.board .board-member .name {
     font-family: "Rubik";
     font-size: 24px;
     margin: 5px auto;
 }
 
-.board .card .position, .board .card .badge {
+.board .board-member .position, .board .board-member .otherPosition {
     border: 2px solid;
     border-radius: 10px;
     width: fit-content;
@@ -68,6 +68,6 @@
     display: inline-block;
 }
 
-.board .card .badge {
-    margin-left: 10px;
+.board .board-member .otherPosition {
+    margin-left: 5px;
 }
