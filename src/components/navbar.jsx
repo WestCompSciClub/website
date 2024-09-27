@@ -1,37 +1,16 @@
 import "../css/navbar.css";
 
-// export default function Navbar() {
-//     return (
-//         <div className="navbar">
-//             <div className="left">
-//                 <a className="home" href="/">
-//                     <img src="/static/logos/favicon.webp"></img>
-//                     <p>WHS Comp Sci Club</p>
-//                 </a>
-//                 <a href="/leaderboard">Leaderboard</a>
-//                 <a href="/events">Events</a>
-//                 <a href="/board">Board</a>
-//             </div>
-
-//             <div className="right">
-//                 <a href="#" target="_blank"><i className="fa-brands fa-instagram"></i> Instagram</a>
-//                 <a href="https://discord.gg/g6HMBn9GZD" target="_blank"><i className="fa-brands fa-discord"></i> Discord</a>
-//             </div>
-//         </div>
-//     )
-// }
-
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+// import NavDropdown from 'react-bootstrap/NavDropdown';
 
 export default function NavbarComponent() {
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container>
                 <Navbar.Brand href="/">
-                <img src="/static/logos/favicon.webp" width="30" height="30"></img>
+                <img src="/static/logos/favicon.png" width="30" height="30" alt=""></img>
                 WHS Comp Sci Club</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">

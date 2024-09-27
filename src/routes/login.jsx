@@ -36,7 +36,7 @@ export default function Login() {
     return (
         <div className="app">
             <Helmet>
-                <title>WHS Comp Sci Club - Login</title>
+                <title>Computer Science Club - Login</title>
             </Helmet>
 
             <div className="page">

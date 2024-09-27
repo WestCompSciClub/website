@@ -36,7 +36,7 @@ const boardMembers = [
     {
         name: "Briana Chiu",
         position: "Publicist",
-        id: "briana_chu",
+        id: "briana_chiu",
         grade: "Junior",
     },
     {
@@ -80,7 +80,7 @@ function makeCard(person) {
         <div className="board-member" key={person.id}>
             <p className="grade" style={{"backgroundColor": gradeColors[person.grade]}}>{person.grade}</p>
             <div className="image-container">
-                <img src="https://gmedia.playstation.com/is/image/SIEPDC/fortnite-keyart-01-en-30nov23?$facebook$"></img>
+                <img src={`/static/board/${person.id}.jpg`} onError={({currentTarget}) => {currentTarget.onerror = null; currentTarget.src="https://gmedia.playstation.com/is/image/SIEPDC/fortnite-keyart-01-en-30nov23?$facebook$"}} alt=""></img>
             </div>
             <p className="name">{person.name}</p>
             <p className="position" style={{"backgroundColor": primary, "borderColor": border}}>{person.position}</p>
@@ -96,7 +96,7 @@ export default function Board() {
     return (
         <div className="app">
             <Helmet>
-                <title>WHS Comp Sci Club - Board</title>
+                <title>Computer Science Club - Board</title>
             </Helmet>
 
             <div className="page">

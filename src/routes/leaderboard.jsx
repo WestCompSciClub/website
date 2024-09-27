@@ -9,11 +9,11 @@ import { useState, useEffect } from 'react';
 function makeEntry(person, index) {
     var addClass = "default";
 
-    if (index == 1) {
+    if (index === 1) {
         addClass = "first";
-    } else if (index == 2) {
+    } else if (index === 2) {
         addClass = "second";
-    } else if (index == 3) {
+    } else if (index === 3) {
         addClass = "third";
     }
     return (
@@ -61,7 +61,7 @@ export default function Leaderboard() {
     return (
         <div className="app">
             <Helmet>
-                <title>WHS Comp Sci Club - Leaderboard</title>
+                <title>Computer Science Club - Leaderboard</title>
             </Helmet>
 
             <div className="page">

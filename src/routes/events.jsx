@@ -35,7 +35,7 @@ export default function Events() {
     return (
         <div className="app">
             <Helmet>
-                <title>WHS Comp Sci Club - Events</title>
+                <title>Computer Science Club - Events</title>
             </Helmet>
 
             <div className="page">
