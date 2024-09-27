@@ -27,17 +27,23 @@ const boardPresidents = [
 
 const boardMembers = [
     {
+        name: "Isaac Goldberg",
+        position: "Secretary",
+        id: "isaac_goldberg",
+        grade: "Senior",
+        otherPosition: "Website Dev",
+    },
+    {
         name: "Briana Chiu",
         position: "Publicist",
         id: "briana_chu",
         grade: "Junior",
     },
     {
-        name: "Isaac Goldberg",
-        position: "Secretary",
-        id: "isaac_goldberg",
-        grade: "Senior",
-        otherPosition: "Website Dev",
+        name: "Nathan Franco",
+        position: "Treasurer",
+        id: "nathan_franco",
+        grade: "Junior",
     },
     {
         name: "Ayush Agarwal",
@@ -47,9 +53,9 @@ const boardMembers = [
     },
     {
         name: "Parthiv Patel",
-        position: "Unknown",
+        position: "ICC Rep",
         id: "parthiv_patel",
-        grade: "Unknown"
+        grade: "Sophomore",
     }
 ]
 
