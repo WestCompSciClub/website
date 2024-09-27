@@ -1,5 +1,5 @@
 body {
-    font-family: "Inter";
+    font-family: "Inter" !important;
     background-color: #333;
     color: #eee;
 }
