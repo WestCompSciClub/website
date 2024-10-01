@@ -8,7 +8,7 @@ import "../css/events.css";
 const events = [
     {
         title: <><i className="fa-solid fa-handshake"></i> Intro Meeting</>,
-        date: "Date TBD",
+        date: "Oct 15",
         location: "Room 4221",
         description: <>Get information on how Comp Sci Club will work this year, when meetings are, who's on the board, and get your first points of the year for the <a href="/leaderboard">leaderboard</a> just by showing up to the first meeting!</>,
     },
