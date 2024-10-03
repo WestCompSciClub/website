@@ -31,7 +31,7 @@ h1 {
 
 a {
     color: #0099ff;
-    text-decoration: none;
+    text-decoration: none !important;
     transition: 0.2s ease;
 }
 a:hover {
