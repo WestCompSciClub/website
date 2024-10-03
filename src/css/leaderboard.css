@@ -1,9 +1,4 @@
-@font-face {
-    font-family: "VeniteAdoremus";
-    src: url("fonts/VeniteAdoremus.ttf");
-}
-
-.leaderboard {
+.leaderboard-container {
     display: flex;
     flex-direction: column;
     width: 70%;
@@ -13,15 +8,22 @@
     row-gap: 10px;
 }
 
+.leaderboard p {
+    text-align: center;
+}
+
 .entry {
     background-color: #5f5f5f;
     display: flex;
-    /* justify-content: space-between; */
     height: fit-content;
     min-height: 40px;
     border-radius: 10px;
     transition: 0.2s ease;
     line-height: 20px;
+}
+
+.entry:not(.headers) p {
+    text-shadow: 0 0 5px #222;
 }
 
 .entry p {
@@ -33,7 +35,7 @@
 }
 
 .entry:not(.headers):hover p {
-    transform: scale(1.1);
+    transform: scale(1.06);
     text-shadow: 0 0 10px black;
 }
 
@@ -43,20 +45,14 @@
 }
 
 .entry.first {
-    /* background:linear-gradient(to right, #ffc628, #fff692); */
-    /* background: linear-gradient(to right, #ff5e00, #ff9a0d); */
-    background-color: #ffae00;
+    background-color: #eca100;
 }
 
 .entry.second {
-    /* background: linear-gradient(to right, #b1b1b1, #dadce1); */
-    /* background: linear-gradient(to right, #be8a53, #c88220); */
-    background-color: #c0c0c0;
+    background-color: #aebdc1;
 }
 
 .entry.third {
-    /* background: linear-gradient(to right, rgb(171, 115, 36), #df9f5e); */
-    /* background: linear-gradient(to right, #be8a53, #c88220); */
     background-color: #a36200;
 }
 
@@ -75,7 +71,7 @@
 
 .wins {
     margin: auto 10px;
-    font-family: "VeniteAdoremus";
+    font-family: Formula1;
     flex-basis: 25%;
     cursor: default;
 }
@@ -89,6 +85,8 @@
 .name {
     width: fit-content;
     margin: auto 0;
+    font-family: Inter;
+    font-weight: 500;
 }
 
 .headers {

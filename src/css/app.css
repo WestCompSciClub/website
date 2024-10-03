@@ -10,8 +10,19 @@
 }
 
 .home p {
+    width: 80%;
     max-width: 800px;
     margin: 0 auto;
+    margin-top: 20px;
+}
+
+p {
+    text-align: left;
+}
+
+h1, h2 {
+    font-family: DINNEXTW1G-Bold;
+    font-weight: 400;
 }
 
 h1 {

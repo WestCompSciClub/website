@@ -64,12 +64,13 @@ export default function Leaderboard() {
                 <title>Computer Science Club - Leaderboard</title>
             </Helmet>
 
-            <div className="page">
-                <Navbar />
-                <h1>Member Leaderboard</h1>
+            <Navbar />
+            
+            <div className="page leaderboard">
+                <h1>LEADERBOARD</h1>
                 <p>Come to our meetings and win competitions to earn points on the leaderboard!</p>
             
-                <div className="leaderboard">
+                <div className="leaderboard-container">
                     <div className="headers entry">
                         <div className="leftinfo">
                             <p className="name header">Name</p>

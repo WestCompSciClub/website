@@ -9,19 +9,19 @@ const boardPresidents = [
         name: "Neel Karkhanis",
         position: "Co-President",
         id: "neel_karkhanis",
-        grade: "Senior",
+        grade: "12th",
     },
     {
         name: "Aiden Lee",
         position: "Co-President",
         id: "aiden_lee",
-        grade: "Senior",
+        grade: "12th",
     },
     {
         name: "Rohith Krish",
         position: "Vice President",
         id: "rohith_krish",
-        grade: "Senior",
+        grade: "12th",
     },
 ];
 
@@ -30,45 +30,47 @@ const boardMembers = [
         name: "Isaac Goldberg",
         position: "Secretary",
         id: "isaac_goldberg",
-        grade: "Senior",
+        grade: "12th",
         otherPosition: "Website Dev",
     },
     {
         name: "Briana Chiu",
         position: "Publicist",
         id: "briana_chiu",
-        grade: "Junior",
+        grade: "11th",
     },
     {
         name: "Nathan Franco",
         position: "Treasurer",
         id: "nathan_franco",
-        grade: "Junior",
+        grade: "11th",
     },
     {
         name: "Ayush Agarwal",
         position: "ICC Rep",
         id: "ayush_agarwal",
-        grade: "Sophomore",
+        grade: "10th",
     },
     {
         name: "Parthiv Patel",
         position: "ICC Rep",
         id: "parthiv_patel",
-        grade: "Sophomore",
+        grade: "10th",
     }
 ]
 
 const gradeColors = {
-    "Senior": "#00b330",
-    "Junior": "#0099ff",
-    "Sophomore": "#9d3bff",
+    "12th": "#00b330",
+    "11th": "#0099ff",
+    "10th": "#9d3bff",
 };
 
 function positionColor(pos) {
     switch (pos) {
         case "Co-President":
             return ["#e8b200", "#ffd859"];
+        case "Vice President":
+            return ["#ff9514", "#ffc987"];
         default:
             return ["#e64100", "#ff6e33"];
     }
@@ -80,7 +82,7 @@ function makeCard(person) {
         <div className="board-member" key={person.id}>
             <p className="grade" style={{"backgroundColor": gradeColors[person.grade]}}>{person.grade}</p>
             <div className="image-container">
-                <img src={`/static/board/${person.id}.jpg`} onError={({currentTarget}) => {currentTarget.onerror = null; currentTarget.src="https://gmedia.playstation.com/is/image/SIEPDC/fortnite-keyart-01-en-30nov23?$facebook$"}} alt=""></img>
+                <img src={`/static/board/${person.id}.jpg`} alt=""></img>
             </div>
             <p className="name">{person.name}</p>
             <p className="position" style={{"backgroundColor": primary, "borderColor": border}}>{person.position}</p>
@@ -98,12 +100,13 @@ export default function Board() {
             <Helmet>
                 <title>Computer Science Club - Board</title>
             </Helmet>
+            
+            <Navbar />
 
-            <div className="page">
-                <Navbar />
-                <h1>Club Board</h1>
-                <div className="board presidents">{boardPresidentsElems}</div>
-                <div className="board members">{boardMembersElems}</div>   
+            <div className="page board">
+                <h1>BOARD</h1>
+                <div className="board-container presidents">{boardPresidentsElems}</div>
+                <div className="board-container nonpresidents">{boardMembersElems}</div>   
             </div>
 
             <Footer />

@@ -1,3 +1,23 @@
+@font-face {
+    font-family: "VeniteAdoremus";
+    src: url("fonts/VeniteAdoremus.ttf");
+}
+
+@font-face {
+    font-family: "Tungsten-Bold";
+    src: url("fonts/Tungsten-Bold.ttf");
+}
+
+@font-face {
+    font-family: "DINNEXTW1G-Bold";
+    src: url("fonts/DINNEXTW1G-Bold.otf");
+}
+
+@font-face {
+    font-family: Formula1;
+    src: url("fonts/Formula1-Regular.otf");
+}
+
 body {
     font-family: "Inter" !important;
     background-color: #333;

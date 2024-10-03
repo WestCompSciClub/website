@@ -7,6 +7,7 @@ import Board from './routes/board'
 import Error404 from './errors/404';
 import Events from './routes/events';
 import Leaderboard from './routes/leaderboard';
+import Hackathons from "./routes/hackathons";
 // import Login from './routes/login';
 
 const routes = createBrowserRouter([
@@ -26,6 +27,10 @@ const routes = createBrowserRouter([
     {
         path: "/leaderboard",
         element: <Leaderboard />
+    },
+    {
+        path: "/hackathons",
+        element: <Hackathons />
     }
     // {
     //     path: "/login",

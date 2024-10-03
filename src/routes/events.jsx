@@ -8,7 +8,7 @@ import "../css/events.css";
 const events = [
     {
         title: <><i className="fa-solid fa-handshake"></i> Intro Meeting</>,
-        date: "Oct 15",
+        date: "October 15",
         location: "Room 4221",
         description: <>Get information on how Comp Sci Club will work this year, when meetings are, who's on the board, and get your first points of the year for the <a href="/leaderboard">leaderboard</a> just by showing up to the first meeting!</>,
     },
@@ -26,7 +26,7 @@ const eventsElems = events.map((event) => {
             <p className="date">{event.date}</p>
             <h3>{event.title}</h3>
             <p className="room">{event.location}</p>
-            <p>{event.description}</p>
+            <p className="description">{event.description}</p>
         </div>
     );
 });
@@ -38,12 +38,13 @@ export default function Events() {
                 <title>Computer Science Club - Events</title>
             </Helmet>
 
-            <div className="page">
-                <Navbar />
+            <Navbar />
+            
+            <div className="page events">
+                <h1>UPCOMING EVENTS</h1>
+                <p>Please note that some dates on this page are still being determined.</p>
 
-                <h1>Upcoming Events</h1>
-
-                <div className="events">
+                <div className="events-container">
                     <Carousel autoPlay={true} infiniteLoop={true} interval={15000} showStatus={false} emulateTouch={true}>
                         {eventsElems}
                     </Carousel>

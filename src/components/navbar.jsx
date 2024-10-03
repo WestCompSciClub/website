@@ -11,12 +11,13 @@ export default function NavbarComponent() {
             <Container>
                 <Navbar.Brand href="/">
                 <img src="/static/logos/favicon.png" width="30" height="30" alt=""></img>
-                WHS Comp Sci Club</Navbar.Brand>
+                Comp Sci Club</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link href="/leaderboard">Leaderboard</Nav.Link>
                         <Nav.Link href="/events">Events</Nav.Link>
+                        <Nav.Link href="/hackathons">Hackathons</Nav.Link>
                         <Nav.Link href="/board">Board</Nav.Link>
                         {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>

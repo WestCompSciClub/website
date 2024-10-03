@@ -1,9 +1,18 @@
-.events {
+.events p {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.events-container {
     max-width: 600px;
     margin: 0 auto;
 }
 
-.events .event {
+h1 {
+    margin-bottom: 0 !important;
+}
+
+.events-container .event {
     margin: 50px auto;
     background-color: #555;
     max-width: 400px;
@@ -11,7 +20,7 @@
     border-radius: 20px;
 }
 
-.events button {
+.events-container button {
     height: 100px;
     margin: auto !important;
     border-radius: 10px;
@@ -38,8 +47,14 @@
     margin: 5px auto;
     font-style: italic;
     color: #aaa;
+    text-align: center;
 }
 
 .event p {
     margin: 20px 10px 10px 10px;
+}
+
+.event .description {
+    text-align: left;
+    margin: auto 20px;
 }
