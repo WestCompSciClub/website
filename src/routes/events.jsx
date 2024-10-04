@@ -17,6 +17,11 @@ const events = [
         date: "October 29",
         location: "Room 4221",
         description: <>Learn how to get started coding in Python in our first non-introductory meeting! No beginner experience required. You may have the chance to win points and make it to the top of our <a href="/leaderboard">leaderboard</a>!</>
+    },
+    {   title: <><i className="fa-solid fa-computer"></i> First Club Hackathon</>,
+        date: "November 5",
+        location: "Room 4221",
+        description: <>Get information on the first hackathon we will be hosting. Be sure to compete in order to gain points on our <a href="/leaderboard">leaderboard</a>!</>
     }
 ];
 
