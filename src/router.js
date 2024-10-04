@@ -8,6 +8,8 @@ import Error404 from './errors/404';
 import Events from './routes/events';
 import Leaderboard from './routes/leaderboard';
 import Hackathons from "./routes/hackathons";
+import PointsBreakdown from "./routes/points";
+import AdminDashboard from "./routes/admin";
 // import Login from './routes/login';
 
 const routes = createBrowserRouter([
@@ -31,6 +33,14 @@ const routes = createBrowserRouter([
     {
         path: "/hackathons",
         element: <Hackathons />
+    },
+    {
+        path: "/points-breakdown",
+        element: <PointsBreakdown />
+    },
+    {
+        path: "/admin",
+        element: <AdminDashboard />
     }
     // {
     //     path: "/login",

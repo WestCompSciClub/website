@@ -53,7 +53,7 @@
 }
 
 .board .board-member .name {
-    font-family: "Rubik";
+    /* font-family: "DINNextW1G-Bold"; */
     font-size: 24px;
     margin: 5px auto;
 }
@@ -66,8 +66,13 @@
     margin: 0 auto;
     cursor: default;
     display: inline-block;
+    transition: 0.2s ease;
 }
 
 .board .board-member .otherPosition {
     margin-left: 5px;
+}
+
+.board .board-member:hover .position, .board .board-member:hover .otherPosition {
+    box-shadow: 0 0 10px rgb(145, 135, 109);
 }

@@ -21,8 +21,12 @@ p {
 }
 
 h1, h2 {
-    font-family: DINNEXTW1G-Bold;
+    font-family: DINNextW1G-Medium;
     font-weight: 400;
+}
+
+strong {
+    font-family: DINNextW1G-Bold;
 }
 
 h1 {
@@ -35,16 +39,15 @@ a {
     transition: 0.2s ease;
 }
 a:hover {
-    color: #00ccff;
+    color: #72d3fd;
 }
 
-.btn {
+/* .btn {
     background-color: #ee2200;
     border: 3px solid transparent;
     padding: 5px 8px;
     border-radius: 10px;
     cursor: pointer;
-    font-family: "Inter";
     color: white;
 }
 .btn.success {
@@ -62,25 +65,48 @@ a:hover {
 
 .btn:active {
     filter: brightness(0.6);
+} */
+
+
+
+.infopage {
+    max-width: 800px;
+    width: 80%;
+    margin: auto;
+}
+
+.infopage p {
+    margin: 0 auto 20px auto;
+    text-align: left;
+    color: rgb(236, 232, 225);
+}
+
+.infopage h2 {
+    text-align: left;
+    margin: 0 auto;
+}
+
+.infopage li {
+    margin: 10px auto;
 }
 
 
 
-/* SPINNER ANIMATION */
-.spinner,
-.spinner div {
+/* loading ANIMATION */
+.loading,
+.loading div {
     box-sizing: border-box;
     margin: 0 auto;
 }
 
-.spinner {
+.loading {
     display: inline-block;
     position: relative;
     width: 80px;
     height: 80px;
 }
 
-.spinner div {
+.loading div {
     position: absolute;
     top: 33.33333px;
     width: 13.33333px;
@@ -90,27 +116,27 @@ a:hover {
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 
-.spinner div:nth-child(1) {
+.loading div:nth-child(1) {
     left: 8px;
-    animation: spinner1 0.6s infinite;
+    animation: loading1 0.6s infinite;
 }
 
-.spinner div:nth-child(2) {
+.loading div:nth-child(2) {
     left: 8px;
-    animation: spinner2 0.6s infinite;
+    animation: loading2 0.6s infinite;
 }
 
-.spinner div:nth-child(3) {
+.loading div:nth-child(3) {
     left: 32px;
-    animation: spinner2 0.6s infinite;
+    animation: loading2 0.6s infinite;
 }
 
-.spinner div:nth-child(4) {
+.loading div:nth-child(4) {
     left: 56px;
-    animation: spinner3 0.6s infinite;
+    animation: loading3 0.6s infinite;
 }
 
-@keyframes spinner1 {
+@keyframes loading1 {
     0% {
         transform: scale(0);
     }
@@ -120,7 +146,7 @@ a:hover {
     }
 }
 
-@keyframes spinner3 {
+@keyframes loading3 {
     0% {
         transform: scale(1);
     }
@@ -130,7 +156,7 @@ a:hover {
     }
 }
 
-@keyframes spinner2 {
+@keyframes loading2 {
     0% {
         transform: translate(0, 0);
     }

@@ -2,7 +2,7 @@ import '../css/app.css';
 import "../css/leaderboard.css";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
-import Spinner from "../components/spinner";
+import Loading from "../components/loading";
 import { Helmet } from 'react-helmet';
 import { useState, useEffect } from 'react';
 
@@ -37,15 +37,23 @@ export default function Leaderboard() {
             const response = await fetch("https://whscompsciclub.vercel.app/api/leaderboard");
             const json = await response.json();
 
-            json.sort((a, b) => {
+            function calculatePoints(person) {
+                var points = 0;
+                for (const reward of person.rewards) {
+                    points += reward.points;
+                }
+                return points;
+            }
+
+            const refined = json.map(u => ({...u, points: calculatePoints(u)})).sort((a, b) => {
                 if (a.points > b.points) return -1;
                 else if (a.points < b.points) return 1;
                 else return 0;
             });
 
             var entries = [];
-            for (let i = 0; i < json.length; i++) {
-                entries.push(makeEntry(json[i], i + 1));
+            for (let i = 0; i < refined.length; i++) {
+                entries.push(makeEntry(refined[i], i + 1));
             }
             setMembers(entries);
         } catch (e) {
@@ -68,8 +76,9 @@ export default function Leaderboard() {
             
             <div className="page leaderboard">
                 <h1>LEADERBOARD</h1>
-                <p>Come to our meetings and win competitions to earn points on the leaderboard!</p>
-            
+                <p style={{marginBottom: 0}}>Come to our meetings and win competitions to earn points on the leaderboard!</p>
+                <p><a href="/points-breakdown">See how points are awarded</a></p>
+
                 <div className="leaderboard-container">
                     <div className="headers entry">
                         <div className="leftinfo">
@@ -81,7 +90,7 @@ export default function Leaderboard() {
 
                     {isLoading ? 
                         (
-                            <Spinner></Spinner>
+                            <Loading></Loading>
                         ) : (
                             <>
                             {members}

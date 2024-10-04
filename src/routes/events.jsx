@@ -22,7 +22,7 @@ const events = [
         date: "November 5",
         location: "Room 4221",
         description: <>Get information on the first hackathon we will be hosting. Be sure to compete in order to gain points on our <a href="/leaderboard">leaderboard</a>!</>
-    }
+    },
 ];
 
 const eventsElems = events.map((event) => {
@@ -47,7 +47,7 @@ export default function Events() {
             
             <div className="page events">
                 <h1>UPCOMING EVENTS</h1>
-                <p>Please note that some dates on this page are still being determined.</p>
+                <p>Please note that some dates on this page are still tentative.</p>
 
                 <div className="events-container">
                     <Carousel autoPlay={true} infiniteLoop={true} interval={15000} showStatus={false} emulateTouch={true}>

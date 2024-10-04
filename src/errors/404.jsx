@@ -1,3 +1,4 @@
+import Button from "react-bootstrap/Button";
 import Navbar from "../components/navbar";
 
 export default function Error404() {
@@ -5,8 +6,12 @@ export default function Error404() {
         <div className="app">
             <Navbar />
             
-            <h1>Error 404</h1>
-            <p>Sorry, that page doesn't exist.</p>
+            <div className="page infopage">
+                <h1>ERROR 404</h1>
+                <p className="text-center">Sorry, that page doesn't exist.</p>
+
+                <Button href="/" variant="primary">Return Home</Button>
+            </div>
         </div>
     )
 }

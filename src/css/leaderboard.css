@@ -23,7 +23,7 @@
 }
 
 .entry:not(.headers) p {
-    text-shadow: 0 0 5px #222;
+    text-shadow: 0 0 5px #333;
 }
 
 .entry p {
@@ -35,13 +35,18 @@
 }
 
 .entry:not(.headers):hover p {
-    transform: scale(1.06);
+    transform: scale(1.1);
     text-shadow: 0 0 10px black;
 }
 
-.entry:not(.default) {
-    height: 45px;
-    font-size: 20px;
+.entry:not(.default):not(.headers) {
+    /* height: 45px; */
+    padding: 12px 0;
+    font-size: 22px;
+}
+
+.entry.default {
+    font-size: 18px;
 }
 
 .entry.first {
@@ -63,7 +68,8 @@
 
 .points {
     margin: auto 10px;
-    font-family: "VeniteAdoremus";
+    /* font-family: "VeniteAdoremus"; */
+    font-family: Formula1;
     cursor: default;
     flex-basis: 25%;
     text-align: center;
@@ -85,16 +91,18 @@
 .name {
     width: fit-content;
     margin: auto 0;
-    font-family: Inter;
+    /* font-family: Inter; */
     font-weight: 500;
+    text-align: left !important;
 }
 
 .headers {
     background-color: transparent;
+    font-size: 18px;
 }
 
 .header {
-    font-family: Inter !important;
+    font-family: DINNextW1G-Medium !important;
 }
 
 .header-wins {

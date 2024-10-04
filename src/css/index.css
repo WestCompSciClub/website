@@ -9,8 +9,18 @@
 }
 
 @font-face {
-    font-family: "DINNEXTW1G-Bold";
-    src: url("fonts/DINNEXTW1G-Bold.otf");
+    font-family: "DINNextW1G-Medium";
+    src: url("fonts/DINNextW1G-Medium.otf");
+}
+
+@font-face {
+    font-family: "DINNextW1G-Regular";
+    src: url("fonts/DINNextW1G-Regular.otf");
+}
+
+@font-face {
+    font-family: "DINNextW1G-Bold";
+    src: url("fonts/DINNextW1G-Bold.otf");
 }
 
 @font-face {
@@ -19,7 +29,6 @@
 }
 
 body {
-    font-family: "Inter" !important;
-    background-color: #333;
-    color: #eee;
+    font-family: "DINNextW1G-Regular" !important;
+    font-weight: 800;
 }
