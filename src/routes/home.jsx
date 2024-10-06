@@ -8,7 +8,7 @@ export default function Home() {
         <div className="app">
             <Helmet>
                 <title>Computer Science Club</title>
-                <img src="file:///Users/neel/Desktop/Screenshot%202024-10-05%20at%2011.58.12%E2%80%AFPM.png"/>
+                <img src="file:///Ushttps://cdn.britannica.com/77/170477-050-1C747EE3/Laptop-computer.jpgers/neel/Desktop/Screenshot%202024-10-05%20at%2011.58.12%E2%80%AFPM.png"/>
             </Helmet>
 
             <Navbar />
