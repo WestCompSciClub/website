@@ -14,7 +14,7 @@ export default function Home() {
             
             <div className="page home">
                 <h1>West High Computer Science Club</h1>
-                <p> how to code, compete in Hackathons, and hang out with other students interested in CS at West!</p>
+                <p>Learn how to code, compete in Hackathons, and hang out with other students interested in CS at West!</p>
                 <p>Check out the <a href="/events">upcoming events</a> page for meeting dates. Once the club gets underway, you'll have the opportunity to climb the <a href="/leaderboard">leaderboard</a> by attending meetings and winning competitions!</p>
             </div>
 
