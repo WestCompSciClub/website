@@ -18,19 +18,19 @@ export default function PointsBreakdown() {
                 <h2>EASY POINTS</h2>
                 <p>
                     <ul>
-                        <li>Attend a meeting (and sign the sign-in sheet): <code>+1</code></li>
+                        <li>Attend a meeting (and sign the sign-in sheet): <code>+2</code></li>
                     </ul>
                 </p>
                 <h2>COMPETITIVE</h2>
                 <p>
                     <ul>
                         <li>
-                            Hackathons - these are subject to change any time before the first Hackathon is over:
+                            Hackathons - these are subject to change:
                             <ul>
-                                <li>1st place: <code>+10</code></li>
-                                <li>2nd place: <code>+6</code></li>
-                                <li>3rd place: <code>+3</code></li>
-                                <li>All other participants (must have given some effort): <code>+1</code></li>
+                                <li>All Participants: <code>10</code> possible points, graded by the board</li>
+                                <li>Most Creative: <code>+2</code></li>
+                                <li>Best Effort (for beginners): <code>+2</code></li>
+                                <li>Judges' Favorite: <code>+2</code></li>
                             </ul>
                         </li>
                     </ul>

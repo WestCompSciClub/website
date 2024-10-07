@@ -1,0 +1,60 @@
+.admin h1 {
+    margin-bottom: 10px !important;
+}
+
+.admin {
+    width: 80%;
+    max-width: 600px;
+    margin: auto;
+}
+
+.accordion {
+    margin-top: 20px;
+}
+
+.accordion .member-points, .accordion .member-id {
+    margin: 0;
+}
+
+form {
+    margin-top: 10px;
+}
+
+.rewards-header {
+    text-align: center;
+    font-size: 18px;
+    margin: 10px 0 0 0;
+}
+
+.rewards-container {
+    display: flex;
+    margin-top: 10px;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.reward-container {
+    background-color: var(--bs-tertiary-bg);
+    flex-basis: 48%;
+    padding: 15px;
+    border-radius: 15px;
+    position: relative;
+}
+
+.admin .form-label {
+    margin: 0 auto 5px auto !important;
+    float: left;
+}
+
+.buttons-container .btn {
+    margin: auto 5px;
+}
+
+.delete-reward {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 14px;
+}

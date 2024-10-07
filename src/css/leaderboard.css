@@ -66,7 +66,7 @@
     flex-basis: 50%;
 }
 
-.points {
+.leaderboard .points {
     margin: auto 10px;
     /* font-family: "VeniteAdoremus"; */
     font-family: Formula1;
@@ -88,7 +88,7 @@
     cursor: default;
 }
 
-.name {
+.leaderboard .name {
     width: fit-content;
     margin: auto 0;
     /* font-family: Inter; */
