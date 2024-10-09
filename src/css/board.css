@@ -42,7 +42,7 @@
 
 .board .board-member .image-container img {
     width: 100%;
-    height: 280px;
+    height: 290px;
     object-fit: cover;
     border-radius: 19px;
     transform-origin: 50% 0%;
@@ -56,6 +56,7 @@
     /* font-family: "DINNextW1G-Bold"; */
     font-size: 24px;
     margin: 5px auto;
+    text-align: center;
 }
 
 .board .board-member .position, .board .board-member .otherPosition {

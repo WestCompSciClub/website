@@ -1,64 +1,135 @@
-import { useState } from "react";
-import { Accordion, Button, CloseButton, Form, InputGroup } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Accordion, Alert, Button, CloseButton, Form, InputGroup } from "react-bootstrap";
 import RewardComponent from "./reward";
+import { postMember, calculateStats } from "../../utils";
+import Loading from "../loading";
 
 export default function MemberComponent({ member, position }) {
-    const [validated, setValidated] = useState(false);
+    const [showAlert, setShowAlert] = useState(false);
+    const [alertElem, setAlertElem] = useState(null);
+    const [showLoading, setShowLoading] = useState(false);
+    const [rewards, setRewards] = useState(member.rewards);
+    const [rewardsElems, setRewardsElems] = useState(false);
+    const [totalPoints, setTotalPoints] = useState(member.points);
 
     function handleSubmit(event) {
+        setShowLoading(true);
+
         event.preventDefault();
-        const form = event.currentTarget;
+        event.stopPropagation();
 
-        const formData = new FormData(event.currentTarget),
-                formDataObj = Object.fromEntries(formData.entries())
-          console.log(formDataObj)
+        const formData = Object.fromEntries((new FormData(event.currentTarget)).entries());
 
-        // if (form.checkValidity() == false) {
-        //     event.preventDefault();
-        //     event.stopPropagation();
-        // }
-    
-        // setValidated(true);
+        const updateDoc = {
+            auth: localStorage.getItem("token"),
+            _id: member._id,
+            name: formData.memberName,
+            rewards: [],
+        }
+
+        let i = 0;
+        while (true) {
+            let timestamp = formData[`${i}-timestamp`];
+            if (!timestamp) break;
+
+            timestamp = parseInt(timestamp);
+            let reason = formData[`${i}-reason`];
+            let points = parseInt(formData[`${i}-points`]);
+            let type = formData[`${i}-type`];
+
+            if (type == "meeting-attended") {
+                reason = "Meeting Attended";
+                points = 2;
+            } else if (type == "hackathon-submission") {
+                reason = "Hackathon Submission";
+            } else if (type == "hackathon-win") {
+                points = 2;
+            }
+
+            if (!reason || !points || !type) {
+                i++;
+                continue;
+            };
+
+            updateDoc.rewards.push({
+                reason,
+                points,
+                timestamp,
+                type,
+            });
+            i++;
+        }
+
+        postMember(updateDoc).then((statusCode) => {
+            setShowLoading(false);
+            if (statusCode == 401) {
+                setAlertElem(
+                    <Alert variant="danger" onClose={() => setShowAlert(false)} dismissible>
+                        <p>Invalid password, changes not submitted.</p>
+                    </Alert>
+                );
+            } else {
+                setAlertElem(
+                    <Alert variant="success" onClose={() => setShowAlert(false)} dismissible>
+                        <p>Your changes have been submitted!</p>
+                    </Alert>
+                );
+
+                var { points: newPoints, wins: newWins } = calculateStats(updateDoc.rewards);
+                setTotalPoints(newPoints);
+            }
+            setShowAlert(true);
+        });
     }
 
     function addReward() {
-        rewards.push({
+        var clone = structuredClone(rewards);
+        clone.push({
             reason: null,
             points: null,
             timestamp: Date.now(),
         });
-        updateRewards();
+        setRewards(clone);
     }
 
     function deleteReward(index) {
-        rewards.splice(index, 1);
-        updateRewards();
+        var clone = structuredClone(rewards);
+        clone.splice(index, 1);
+        setRewards(clone);
     }
 
-    var rewards = member.rewards;
+    useEffect(() => {
+        if (rewards.length == 0) {
+            return setRewardsElems(
+                <p className="text-center" style={{ flexBasis: "100%" }}>No rewards yet.</p>
+            )
+        }
 
-    const [rewardsElems, setRewardsElems] = useState(false);
-    function updateRewards() {
+        let sortedRewards = rewards.sort((a, b) => {
+            if (a.timestamp < b.timestamp) return -1;
+            if (a.timestamp > b.timestamp) return 1;
+            else return 0;
+        });
+
         let i = -1;
-        setRewardsElems(rewards.map(r => {
+        setRewardsElems(sortedRewards.map(r => {
             i++;
+            let j = i;
             return (
-                <div className="reward-container">
-                    <RewardComponent reward={r} />
-                    <div className="delete-reward"><CloseButton onClick={() => deleteReward(i)} /></div>
+                <div className="reward-container" key={`${member._id}-${j}`}>
+                    <RewardComponent reward={r} id={j} />
+                    <div className="delete-reward"><CloseButton onClick={() => deleteReward(j)} /></div>
                 </div>
             );
         }));
-    }
-
-    if (!rewardsElems) updateRewards();
+    }, [rewards]);
 
     return (
-        <Accordion.Item eventKey={member._id}>
+        <Accordion.Item eventKey={member._id} key={member._id}>
             <Accordion.Header>#{position} - {member.name}</Accordion.Header>
 
             <Accordion.Body className="member-info">
-                <p className="member-points">Total Points: {member.points}</p>
+                <p className="member-points">Total Points: {totalPoints}</p>
                 <p className="member-id">ID: <code>{member._id}</code></p>
 
                 <Form noValidate onSubmit={handleSubmit}>
@@ -75,6 +146,19 @@ export default function MemberComponent({ member, position }) {
                         <Button variant="primary" onClick={addReward}><i className="fa-solid fa-circle-plus"></i> Add Reward</Button>
                         <Button variant="success" type="submit"><i className="fa-solid fa-floppy-disk"></i> Save Changes</Button>
                     </div>
+
+                    {showLoading ?
+                        <Loading></Loading>
+                        :
+                        <></>
+                    }
+
+                    {showAlert ?
+                        alertElem
+                        :
+                        <></>
+                    }
+
                 </Form>
             </Accordion.Body>
         </Accordion.Item>

@@ -38,7 +38,7 @@ form {
 .reward-container {
     background-color: var(--bs-tertiary-bg);
     flex-basis: 48%;
-    padding: 15px;
+    padding: 10px 15px 15px 15px;
     border-radius: 15px;
     position: relative;
 }
@@ -46,6 +46,10 @@ form {
 .admin .form-label {
     margin: 0 auto 5px auto !important;
     float: left;
+}
+
+.admin .form-label {
+    margin-top: 6px !important;
 }
 
 .buttons-container .btn {
@@ -57,4 +61,14 @@ form {
     top: 5px;
     right: 5px;
     font-size: 14px;
+}
+
+.alert {
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 10px !important;
+}
+
+.alert p {
+    margin-bottom: 0;
 }

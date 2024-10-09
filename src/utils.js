@@ -1,17 +1,22 @@
+export function calculateStats(rewards) {
+    var points = 0;
+    var wins = 0;
+    for (const reward of rewards) {
+        points += reward.points;
+        if (reward.type == "hackathon-win") wins++;
+    }
+    return {
+        points,
+        wins,
+    };
+}
+
 export async function fetchMembers(mapFunc) {
     try {
         const response = await fetch("https://whscompsciclub.vercel.app/api/leaderboard");
         const json = await response.json();
 
-        function calculatePoints(person) {
-            var points = 0;
-            for (const reward of person.rewards) {
-                points += reward.points;
-            }
-            return points;
-        }
-
-        const refined = json.map(u => ({...u, points: calculatePoints(u)})).sort((a, b) => {
+        const refined = json.map(u => ({...u, ...calculateStats(u.rewards)})).sort((a, b) => {
             if (a.points > b.points) return -1;
             else if (a.points < b.points) return 1;
             else return 0;
@@ -23,7 +28,26 @@ export async function fetchMembers(mapFunc) {
         }
         return entries;
     } catch (e) {
-        console.error(e);
+        console.error("couldn't fetch members:", e);
         return false;
     }
+}
+
+export async function postMember(memberData) {
+    return new Promise((res, _rej) => {
+        try {
+            fetch("http://localhost:8000/api/member", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(memberData),
+            }).then((response) => {
+                console.log("update member post request sent, returned response:", response);
+                res(response.status);
+            });
+        } catch (e) {
+            console.error("couldn't send post request to update member:", memberData, e);
+            res(false);
+            return false;
+        }
+    });
 }

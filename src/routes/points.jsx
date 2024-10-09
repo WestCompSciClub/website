@@ -10,7 +10,7 @@ export default function PointsBreakdown() {
             </Helmet>
 
             <Navbar />
-            
+
             <div className="page infopage points-breakdown">
                 <h1>POINTS BREAKDOWN</h1>
 
@@ -28,9 +28,14 @@ export default function PointsBreakdown() {
                             Hackathons - these are subject to change:
                             <ul>
                                 <li>All Participants: <code>10</code> possible points, graded by the board</li>
-                                <li>Most Creative: <code>+2</code></li>
-                                <li>Best Effort (for beginners): <code>+2</code></li>
-                                <li>Judges' Favorite: <code>+2</code></li>
+                                <li>
+                                    Hackathon awards (will be counted as a "win" on the leaderboard):
+                                    <ul>
+                                        <li>Most Creative: <code>+2</code></li>
+                                        <li>Best Effort (for beginners): <code>+2</code></li>
+                                        <li>Judges' Favorite: <code>+2</code></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
                     </ul>
