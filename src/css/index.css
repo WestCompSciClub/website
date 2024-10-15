@@ -1,31 +1,31 @@
 @font-face {
     font-family: "VeniteAdoremus";
-    src: url("fonts/VeniteAdoremus.ttf");
+    src: url("fonts/veniteadoremus.ttf");
 }
 
 @font-face {
     font-family: "Tungsten-Bold";
-    src: url("fonts/Tungsten-Bold.ttf");
+    src: url("fonts/tungsten-bold.ttf");
 }
 
 @font-face {
     font-family: "DINNextW1G-Medium";
-    src: url("fonts/DINNextW1G-Medium.otf");
+    src: url("fonts/dinnextw1g-medium.otf");
 }
 
 @font-face {
     font-family: "DINNextW1G-Regular";
-    src: url("fonts/DINNextW1G-Regular.otf");
+    src: url("fonts/dinnextw1g-regular.otf");
 }
 
 @font-face {
     font-family: "DINNextW1G-Bold";
-    src: url("fonts/DINNextW1G-Bold.otf");
+    src: url("fonts/dinnextw1g-bold.otf");
 }
 
 @font-face {
     font-family: Formula1;
-    src: url("fonts/Formula1-Regular.otf");
+    src: url("fonts/formula1-regular.otf");
 }
 
 body {
