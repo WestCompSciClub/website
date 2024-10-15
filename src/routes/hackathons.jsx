@@ -13,13 +13,12 @@ export default function Hackathons() {
             
             <div className="page hackathons infopage">
                 <h1>HACKATHONS</h1>
-                <p>We host a Hackathon every month, where members compete to make the best solution to a prompt we provide. The winners (and runner-ups) will earn points on the <a href="/leaderboard">leaderboard!</a></p>
+                <p>We host a Hackathon every month, where members compete to make the best solution to a prompt we provide. Participants will earn points on the <a href="/leaderboard">leaderboard</a>, and winners will earn extra! View the <a href="/points-breakdown">points breakdown here</a>.</p>
                 <h2>MONTHLY FORMAT</h2>
                 <p>
                     <ul>
-                        <li>1st meeting (<strong>first</strong> Tuesday of the month): introduce the competition and give you some ideas to get started. Participants will then have a week to write your programs, which will be judged by the board.</li>
-                        <li>2nd meeting (<strong>second</strong> Tuesday): we will announce the winners, provide our solutions, explain how the project might apply to real software engineering jobs, etc.</li>
-                        <li>3rd meeting (<strong>fourth</strong> Tuesday): an educational meeting where we teach members coding topics, either just to learn in general, or to improve your performance on Hackathons!</li>
+                        <li>Meeting 1 (<strong>first</strong> Tuesday of the month): We will introduce the Hackathon prompt and give you some ideas to get started. Participants will then have until Sunday, 11:59 PM to write and submit your programs, which will be judged by the board. Winners will be announced online.</li>
+                        <li>Meeting 2 (<strong>last</strong> Tuesday): An educational session to teach new coding skills to perform better on future Hackathons, and we will talk about the successes of those who did well on the previous Hackathon, and how our solutions would've looked.</li>
                     </ul>
                 </p>
                 <h2>SOLUTIONS</h2>
