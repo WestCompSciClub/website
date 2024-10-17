@@ -36,7 +36,7 @@ export async function fetchMembers(mapFunc) {
 export async function postMember(memberData) {
     return new Promise((res, _rej) => {
         try {
-            fetch("http://localhost:8000/api/member", {
+            fetch("https://whscompsciclub.vercel.app/api/member", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(memberData),
@@ -50,4 +50,24 @@ export async function postMember(memberData) {
             return false;
         }
     });
+}
+
+export async function createMember(name) {
+    return new Promise((res, _rej) => {
+        try {
+            fetch("https://whscompsciclub.vercel.app/api/createmember", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name }),
+            }).then(async (response) => {
+                console.log("create member post request sent, returned response:", response);
+                let json = response.status == 200 ? await response.json() : {};
+                res(response.status, json);
+            });
+        } catch (e) {
+            console.error("couldn't send post request to create member:", name, e);
+            res(false);
+            return false;
+        }
+    })
 }

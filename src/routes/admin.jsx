@@ -1,10 +1,10 @@
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import { Helmet } from 'react-helmet';
-import { fetchMembers } from "../utils";
+import { createMember, fetchMembers } from "../utils";
 import Loading from "../components/loading";
-import { useEffect, useState } from "react";
-import { Accordion, Form, InputGroup, Button, Modal } from "react-bootstrap";
+import { useEffect, useRef, useState } from "react";
+import { Accordion, Form, InputGroup, Button, Modal, Alert } from "react-bootstrap";
 import MemberComponent from "../components/admin/member";
 import "../css/admin.css";
 
@@ -13,6 +13,8 @@ export default function AdminDashboard() {
     const [isLoading, setLoading] = useState(true);
     const [savedPassword, setSavedPassword] = useState("");
     const [showModal, setShowModal] = useState(false);
+    const [showCreateMemberAlert, setShowCreateMemberAlert] = useState(false);
+    const [createMemberAlertElem, setCreateMemberAlertElem] = useState(null);
 
     const handleClose = () => setShowModal(false);
     const handleShow = () => setShowModal(true);
@@ -31,18 +33,54 @@ export default function AdminDashboard() {
         );
     }
 
+    let memberRef = useRef([]);
+
     useEffect(() => {
         setSavedPassword(localStorage.getItem("token"));
 
         fetchMembers(makeAccordionEntry).then((entries) => {
             if (entries) setAccordion(makeAccordion(entries));
             setLoading(false);
+            memberRef.current = entries;
         });
     }, []);
 
     function handlePassword(event) {
         if (event.target.value.length == 0) return localStorage.removeItem("token");
         localStorage.setItem("token", event.target.value);
+    }
+
+    function handleNewMember() {
+        var input = document.getElementById("newMemberName");
+        var name = input.value;
+
+        if (!name) {
+            setCreateMemberAlertElem(
+                <Alert variant="danger" onClose={() => setShowCreateMemberAlert(false)} dismissible>
+                    <p>You must provide the name of the member you are adding.</p>
+                </Alert>
+            );
+            setShowCreateMemberAlert(true);
+            return;
+        }
+
+        createMember(name).then((statusCode, data) => {
+            if (statusCode == 401) {
+                setCreateMemberAlertElem(
+                    <Alert variant="danger" onClose={() => setShowCreateMemberAlert(false)} dismissible>
+                        <p>Invalid password, changes not submitted.</p>
+                    </Alert>
+                );
+                setShowCreateMemberAlert(true);
+            } else {
+                memberRef.current.push(data);
+                input.value = "";
+
+                setAccordion(makeAccordion(
+                    memberRef.current.map(makeAccordionEntry)
+                ));
+            }
+        });
     }
 
     return (
@@ -91,6 +129,23 @@ export default function AdminDashboard() {
                         <Loading></Loading>
                     ) : (
                         <>
+                            <InputGroup className="mt-3">
+                                <InputGroup.Text>New Member</InputGroup.Text>
+                                <Form.Control
+                                    id="newMemberName"
+                                    placeholder="Type member name here..."
+                                    type="text"
+                                />
+
+                                <Button variant="info" onClick={handleNewMember}>Create New Member</Button>
+                            </InputGroup>
+
+                            {showCreateMemberAlert ?
+                                createMemberAlertElem
+                                :
+                                <></>
+                            }
+
                             {accordion}
                         </>
                     )

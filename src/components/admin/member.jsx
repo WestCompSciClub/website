@@ -9,8 +9,8 @@ export default function MemberComponent({ member, position }) {
     const [alertElem, setAlertElem] = useState(null);
     const [showLoading, setShowLoading] = useState(false);
     const [rewards, setRewards] = useState(member.rewards);
+    const [savedRewards, setSavedRewards] = useState(member.rewards);
     const [rewardsElems, setRewardsElems] = useState(false);
-    const [totalPoints, setTotalPoints] = useState(member.points);
 
     function handleSubmit(event) {
         setShowLoading(true);
@@ -75,8 +75,7 @@ export default function MemberComponent({ member, position }) {
                     </Alert>
                 );
 
-                var { points: newPoints, wins: newWins } = calculateStats(updateDoc.rewards);
-                setTotalPoints(newPoints);
+                setSavedRewards(updateDoc.rewards);
             }
             setShowAlert(true);
         });
@@ -97,6 +96,10 @@ export default function MemberComponent({ member, position }) {
         clone.splice(index, 1);
         setRewards(clone);
     }
+    
+    function undoChanges() {
+        setRewards(savedRewards);
+    }
 
     useEffect(() => {
         if (rewards.length == 0) {
@@ -115,8 +118,10 @@ export default function MemberComponent({ member, position }) {
         setRewardsElems(sortedRewards.map(r => {
             i++;
             let j = i;
+            let uuid = crypto.randomUUID();
+
             return (
-                <div className="reward-container" key={`${member._id}-${j}`}>
+                <div className="reward-container" key={`${member._id}-${uuid}`}>
                     <RewardComponent reward={r} id={j} />
                     <div className="delete-reward"><CloseButton onClick={() => deleteReward(j)} /></div>
                 </div>
@@ -124,12 +129,14 @@ export default function MemberComponent({ member, position }) {
         }));
     }, [rewards]);
 
+    let stats = calculateStats(savedRewards);
+
     return (
         <Accordion.Item eventKey={member._id} key={member._id}>
             <Accordion.Header>#{position} - {member.name}</Accordion.Header>
 
             <Accordion.Body className="member-info">
-                <p className="member-points">Total Points: {totalPoints}</p>
+                <p className="member-points">Total Points: {stats.points} | Total Wins: {stats.wins}</p>
                 <p className="member-id">ID: <code>{member._id}</code></p>
 
                 <Form noValidate onSubmit={handleSubmit}>
@@ -143,7 +150,8 @@ export default function MemberComponent({ member, position }) {
                     </div>
 
                     <div className="buttons-container">
-                        <Button variant="primary" onClick={addReward}><i className="fa-solid fa-circle-plus"></i> Add Reward</Button>
+                        <Button variant="primary" onClick={() => addReward()}><i className="fa-solid fa-circle-plus"></i> Add Reward</Button>
+                        <Button variant="danger" onClick={() => undoChanges()}><i className="fa-solid fa-rotate-left"></i> Undo Changes</Button>
                         <Button variant="success" type="submit"><i className="fa-solid fa-floppy-disk"></i> Save Changes</Button>
                     </div>
 

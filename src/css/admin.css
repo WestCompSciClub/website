@@ -9,7 +9,7 @@
 }
 
 .accordion {
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .accordion .member-points, .accordion .member-id {
@@ -63,10 +63,14 @@ form {
     font-size: 14px;
 }
 
-.alert {
+.member-info .alert {
     text-align: left;
-    margin-top: 20px;
+    margin-top: 20px !important;
     margin-bottom: 10px !important;
+}
+
+.alert {
+    margin: 15px auto;
 }
 
 .alert p {
