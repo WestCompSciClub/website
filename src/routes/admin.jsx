@@ -28,6 +28,7 @@ export default function AdminDashboard() {
     }
 
     function makeAccordionEntry(member, position) {
+        console.log(member)
         return (
             <MemberComponent key={member._id} member={member} position={position} />
         );
@@ -64,8 +65,11 @@ export default function AdminDashboard() {
             return;
         }
 
-        createMember(name).then((statusCode, data) => {
-            if (statusCode == 401) {
+        createMember(name, localStorage.getItem("token")).then((results) => {
+            if (!results) return;
+            var { status, data } = results;
+
+            if (status == 401) {
                 setCreateMemberAlertElem(
                     <Alert variant="danger" onClose={() => setShowCreateMemberAlert(false)} dismissible>
                         <p>Invalid password, changes not submitted.</p>
@@ -73,12 +77,10 @@ export default function AdminDashboard() {
                 );
                 setShowCreateMemberAlert(true);
             } else {
-                memberRef.current.push(data);
+                memberRef.current.push(makeAccordionEntry(data, memberRef.current.length));
                 input.value = "";
 
-                setAccordion(makeAccordion(
-                    memberRef.current.map(makeAccordionEntry)
-                ));
+                setAccordion(makeAccordion(memberRef.current));
             }
         });
     }
