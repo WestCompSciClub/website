@@ -1,8 +1,11 @@
+const env = window.location.href.includes("localhost") ? "dev" : "prod";
+const baseUrl = env == "dev" ? "http://localhost:8000" : "https://whscompsciclub.vercel.app";
+
 export function calculateStats(rewards) {
     var points = 0;
     var wins = 0;
     for (const reward of rewards) {
-        points += reward.points;
+        points += reward.points || 0;
         if (reward.type == "hackathon-win") wins++;
     }
     return {
@@ -13,7 +16,7 @@ export function calculateStats(rewards) {
 
 export async function fetchMembers(mapFunc) {
     try {
-        const response = await fetch("https://whscompsciclub.vercel.app/api/leaderboard");
+        const response = await fetch(`${baseUrl}/api/leaderboard`);
         const json = await response.json();
 
         const refined = json.map(u => ({...u, ...calculateStats(u.rewards)})).sort((a, b) => {
@@ -36,7 +39,7 @@ export async function fetchMembers(mapFunc) {
 export async function postMember(memberData) {
     return new Promise((res, _rej) => {
         try {
-            fetch("https://whscompsciclub.vercel.app/api/member", {
+            fetch(`${baseUrl}/api/member`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(memberData),
@@ -56,7 +59,7 @@ export async function createMember(name, auth) {
     return new Promise((res, _rej) => {
         try {
             // fetch("https://whscompsciclub.vercel.app/api/createmember", {
-            fetch("http://localhost:8000/api/createmember", {
+            fetch(`${baseUrl}/api/createmember`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ auth, name }),

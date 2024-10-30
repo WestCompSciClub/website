@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Accordion, Alert, Button, CloseButton, Form, InputGroup } from "react-bootstrap";
 import RewardComponent from "./reward";
 import { postMember, calculateStats } from "../../utils";
@@ -8,9 +8,12 @@ export default function MemberComponent({ member, position }) {
     const [showAlert, setShowAlert] = useState(false);
     const [alertElem, setAlertElem] = useState(null);
     const [showLoading, setShowLoading] = useState(false);
-    const [rewards, setRewards] = useState(member.rewards);
-    const [savedRewards, setSavedRewards] = useState(member.rewards);
     const [rewardsElems, setRewardsElems] = useState(false);
+
+    const idRewards = (rewards) => rewards.map((r) => ({ ...r, uuid: crypto.randomUUID() }));
+
+    const localRewards = useRef(idRewards(member.rewards));
+    const savedRewards = useRef(idRewards(member.rewards));
 
     function handleSubmit(event) {
         setShowLoading(true);
@@ -27,6 +30,7 @@ export default function MemberComponent({ member, position }) {
             rewards: [],
         }
 
+        let errors = false;
         let i = 0;
         while (true) {
             let timestamp = formData[`${i}-timestamp`];
@@ -47,6 +51,7 @@ export default function MemberComponent({ member, position }) {
             }
 
             if (!reason || !points || !type) {
+                errors = true;
                 i++;
                 continue;
             };
@@ -69,67 +74,87 @@ export default function MemberComponent({ member, position }) {
                     </Alert>
                 );
             } else {
-                setAlertElem(
-                    <Alert variant="success" onClose={() => setShowAlert(false)} dismissible>
-                        <p>Your changes have been submitted!</p>
-                    </Alert>
-                );
+                if (errors) {
+                    setAlertElem(
+                        <Alert variant="warning" onClose={() => setShowAlert(false)} dismissible>
+                            <p>Some rewards were not submitted because not all fields were filled out.</p>
+                        </Alert>
+                    );
+                } else {
+                    setAlertElem(
+                        <Alert variant="success" onClose={() => setShowAlert(false)} dismissible>
+                            <p>Your changes have been submitted!</p>
+                        </Alert>
+                    );
+                }
 
-                setSavedRewards(updateDoc.rewards);
+                savedRewards.current = updateDoc.rewards;
             }
             setShowAlert(true);
         });
     }
 
     function addReward() {
-        var clone = structuredClone(rewards);
-        clone.push({
+        localRewards.current.push({
             reason: null,
             points: null,
             timestamp: Date.now(),
+            type: null,
+            uuid: crypto.randomUUID(),
         });
-        setRewards(clone);
+        setRewardsElems(mapRewardsToElems(localRewards.current));
     }
 
     function deleteReward(index) {
-        var clone = structuredClone(rewards);
-        clone.splice(index, 1);
-        setRewards(clone);
+        localRewards.current.splice(index, 1);
+        setRewardsElems(mapRewardsToElems(localRewards.current));
     }
-    
+
     function undoChanges() {
-        setRewards(savedRewards);
+        if (savedRewards.current.length > 0) {
+            setRewardsElems(false);
+        } else {
+            setRewardsElems(mapRewardsToElems(savedRewards.current));
+        }
+    }
+
+    function createRewardComponent(reward, key) {
+        return (
+            <div className="reward-container" key={`${member._id}-${reward.uuid}`}>
+                <RewardComponent reward={reward} id={key} />
+                <div className="delete-reward"><CloseButton onClick={() => deleteReward(key)} /></div>
+            </div>
+        );
+    }
+
+    function mapRewardsToElems(rewards) {
+        let i = -1;
+        return rewards.map(r => {
+            i++;
+            let j = i;
+            return createRewardComponent(r, j);
+        });
     }
 
     useEffect(() => {
-        if (rewards.length == 0) {
+        if (localRewards.current.length == 0) {
             return setRewardsElems(
                 <p className="text-center" style={{ flexBasis: "100%" }}>No rewards yet.</p>
             )
         }
 
-        let sortedRewards = rewards.sort((a, b) => {
+        let sortedRewards = localRewards.current.sort((a, b) => {
             if (a.timestamp < b.timestamp) return -1;
             if (a.timestamp > b.timestamp) return 1;
             else return 0;
         });
 
-        let i = -1;
-        setRewardsElems(sortedRewards.map(r => {
-            i++;
-            let j = i;
-            let uuid = crypto.randomUUID();
+        savedRewards.current = sortedRewards;
 
-            return (
-                <div className="reward-container" key={`${member._id}-${uuid}`}>
-                    <RewardComponent reward={r} id={j} />
-                    <div className="delete-reward"><CloseButton onClick={() => deleteReward(j)} /></div>
-                </div>
-            );
-        }));
-    }, [rewards]);
+        setRewardsElems(mapRewardsToElems(sortedRewards));
+    }, []);
 
-    let stats = calculateStats(savedRewards);
+    let stats = calculateStats(savedRewards.current);
 
     return (
         <Accordion.Item eventKey={member._id} key={member._id}>

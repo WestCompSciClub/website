@@ -28,7 +28,6 @@ export default function AdminDashboard() {
     }
 
     function makeAccordionEntry(member, position) {
-        console.log(member)
         return (
             <MemberComponent key={member._id} member={member} position={position} />
         );
@@ -72,17 +71,22 @@ export default function AdminDashboard() {
             if (status == 401) {
                 setCreateMemberAlertElem(
                     <Alert variant="danger" onClose={() => setShowCreateMemberAlert(false)} dismissible>
-                        <p>Invalid password, changes not submitted.</p>
+                        <p>Invalid password, member not created.</p>
                     </Alert>
                 );
                 setShowCreateMemberAlert(true);
             } else {
+                console.log(memberRef.current)
                 memberRef.current.push(makeAccordionEntry(data, memberRef.current.length));
                 input.value = "";
 
                 setAccordion(makeAccordion(memberRef.current));
             }
         });
+    }
+
+    function handleNewMemberKeyDown(e) {
+        if (e.code == "Enter") handleNewMember();
     }
 
     return (
@@ -137,6 +141,8 @@ export default function AdminDashboard() {
                                     id="newMemberName"
                                     placeholder="Type member name here..."
                                     type="text"
+                                    autoComplete="off"
+                                    onKeyDown={handleNewMemberKeyDown}
                                 />
 
                                 <Button variant="info" onClick={handleNewMember}>Create New Member</Button>
