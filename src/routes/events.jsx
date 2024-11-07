@@ -23,6 +23,11 @@ const events = [
         location: "Room 4221",
         description: <>Get information on the first hackathon we will be hosting, and learn protocol for future meetings. Get inspiration and Start working on your project with help from board members. Be sure to compete in order to gain points on our <a href="/leaderboard">leaderboard</a>!</>
     },
+    {   title: <><i class="fa-regular fa-file"></i> Hackathon Submission Due!!!</>,
+        date: "November 10",
+        location: "westhighcompsciclub@gmail.com",
+        description: <>Be sure to submit your hackathon project to our email, westhighcompsciclub@gmail.com, or #hackathon-submissions in our discord by Nov 10 11:59 to be considered in our competition. We look forward to judging your projects! </>
+    },
 ];
 
 const eventsElems = events.map((event) => {
